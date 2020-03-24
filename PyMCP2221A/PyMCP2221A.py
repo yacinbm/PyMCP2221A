@@ -15,7 +15,7 @@ class PyMCP2221A:
         self.mcp2221a = hid.device()
         try:
             self.mcp2221a.open_path(hid.enumerate(VID, PID)[devnum]["path"])
-        expect:
+        except:
             print("No MCP2221 device found!")
             raise
         self.CLKDUTY_0 = 0x00
