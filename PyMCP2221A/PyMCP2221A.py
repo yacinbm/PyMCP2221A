@@ -13,11 +13,10 @@ import time
 class PyMCP2221A:
     def __init__(self,VID = 0x04D8,PID = 0x00DD,devnum = 0):
         self.mcp2221a = hid.device()
-        try:
+        try :
             self.mcp2221a.open_path(hid.enumerate(VID, PID)[devnum]["path"])
-        except:
-            print("No MCP2221 device found!")
-            raise
+        except :
+            raise RuntimeError("No MCP2221 device found...")
         self.CLKDUTY_0 = 0x00
         self.CLKDUTY_25 = 0x08
         self.CLKDUTY_50 = 0x10
